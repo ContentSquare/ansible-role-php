@@ -46,23 +46,16 @@
 # Setup/install tasks.
 - include_tasks: setup-RedHat.yml
   when: (php_install_from_source == false) and (ansible_os_family == 'RedHat')
-  static: no
 
 - include_tasks: setup-Debian.yml
   when: (php_install_from_source == false) and (ansible_os_family == 'Debian')
-  static: no
 
 # Install PHP from source when php_install_from_source is true.
 - include_tasks: install-from-source.yml
   when: php_install_from_source == true
-  static: no
 
 # Configure PHP.
 - import_tasks: configure.yml
-  static: no
 - import_tasks: configure-apcu.yml
-  static: no
 - import_tasks: configure-opcache.yml
-  static: no
 - import_tasks: configure-fpm.yml
-  static: no
